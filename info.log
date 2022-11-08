@@ -1,0 +1,21 @@
+2022-10-23 18:35:25.425  INFO 13188 --- [main] c.e.f.FootballManagerApplication         : Starting FootballManagerApplication using Java 18.0.2.1 on LAPTOP-PVLV3QUN with PID 13188 (D:\Users\denis\IdeaProjects\football-manager\target\classes started by denis in D:\Users\denis\IdeaProjects\football-manager)
+2022-10-23 18:35:25.427  INFO 13188 --- [main] c.e.f.FootballManagerApplication         : No active profile set, falling back to 1 default profile: "default"
+2022-10-23 18:35:25.906  INFO 13188 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-23 18:35:25.951  INFO 13188 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 3 JPA repository interfaces.
+2022-10-23 18:35:26.326  INFO 13188 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-10-23 18:35:26.333  INFO 13188 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-23 18:35:26.333  INFO 13188 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-23 18:35:26.412  INFO 13188 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-23 18:35:26.413  INFO 13188 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 938 ms
+2022-10-23 18:35:26.437  INFO 13188 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-23 18:35:26.591  INFO 13188 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-23 18:35:26.599  INFO 13188 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/db'. Database available at 'jdbc:h2:mem:testDb'
+2022-10-23 18:35:26.704  INFO 13188 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-23 18:35:26.734  INFO 13188 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-23 18:35:26.848  INFO 13188 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-23 18:35:26.931  INFO 13188 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-10-23 18:35:27.296  INFO 13188 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-23 18:35:27.301  INFO 13188 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-23 18:35:27.609  WARN 13188 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-23 18:35:27.856  INFO 13188 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-23 18:35:27.864  INFO 13188 --- [main] c.e.f.FootballManagerApplication         : Started FootballManagerApplication in 2.74 seconds (JVM running for 3.236)
