@@ -5,10 +5,9 @@ import lombok.Data;
 @Data
 public class PlayerTransferDto {
 
-    String playerFirstName;
-    String playerLastName;
-    String fromTeam;
-    String toTeam;
-    int pricePlayer;
-
+    private String playerFirstName;
+    private String playerLastName;
+    private String fromTeam;
+    private String toTeam;
+    private int pricePlayer;
 }

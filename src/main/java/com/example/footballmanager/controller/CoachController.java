@@ -13,27 +13,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/coach")
 public class CoachController {
+
     @Autowired
     private CoachService coachService;
 
     @Autowired
     private TeamService teamService;
 
-
     @GetMapping("/{coachFirstName}/{coachLastName}")
     public ResponseEntity<CoachDto> findByFirstNameAndLastName(@PathVariable String coachFirstName, @PathVariable String coachLastName) {
-        Coach coach = coachService.findByCoachFirstNameAndCoachLastName(coachFirstName,coachLastName);
+        Coach coach = coachService.findByCoachFirstNameAndCoachLastName(coachFirstName, coachLastName);
         return new ResponseEntity<>(CoachDto.builder()
                 .coachFirstName(coach.getCoachFirstName())
                 .coachAge(coach.getCoachAge())
                 .build(), HttpStatus.OK);
     }
-
-
 
     @PostMapping("/saveCoach")
     public ResponseEntity<CoachDto> createCoach(@RequestBody Coach coach) {
@@ -42,8 +41,7 @@ public class CoachController {
                 .coachFirstName(coach.getCoachFirstName())
                 .coachLastName(coach.getCoachLastName())
                 .coachAge(coach.getCoachAge())
-                .build(),HttpStatus.OK);
-
+                .build(), HttpStatus.OK);
     }
 
     @GetMapping("/findAll")
@@ -54,27 +52,18 @@ public class CoachController {
     }
 
     @DeleteMapping("/delete/{coachFirstName}/{coachLastName}")
-    public ResponseEntity<HttpStatus> deleteCoachByCoachFirstName(@PathVariable String coachFirstName,@PathVariable String coachLastName){
-        Coach coach = coachService.findByCoachFirstNameAndCoachLastName(coachFirstName,coachLastName);
+    public ResponseEntity<HttpStatus> deleteCoachByCoachFirstName(@PathVariable String coachFirstName, @PathVariable String coachLastName) {
+        Coach coach = coachService.findByCoachFirstNameAndCoachLastName(coachFirstName, coachLastName);
         coachService.delete(coach);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
     }
 
     @PostMapping("/{teamName}/{coachFirstName}/{coachLastName}")
-    public ResponseEntity<Team> addCoach(@PathVariable String teamName,@PathVariable String coachFirstName, @PathVariable String coachLastName){
-
-        Coach coach = coachService.findByCoachFirstNameAndCoachLastName(coachFirstName,coachLastName);
+    public ResponseEntity<Team> addCoach(@PathVariable String teamName, @PathVariable String coachFirstName, @PathVariable String coachLastName) {
+        Coach coach = coachService.findByCoachFirstNameAndCoachLastName(coachFirstName, coachLastName);
         Team team = teamService.findByNameTeam(teamName);
         team.setCoach(coach);
         Team save = teamService.save(team);
         return new ResponseEntity<>(save, HttpStatus.CREATED);
-
     }
-
-
-
-
-
-
 }

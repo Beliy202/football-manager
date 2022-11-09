@@ -8,6 +8,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class PlayerDto {
+
     private String firstName;
     private String lastName;
     private String age;
@@ -16,8 +17,6 @@ public class PlayerDto {
     private String position;
     private boolean transfer;
     private int price;
-
-
 }
 
 

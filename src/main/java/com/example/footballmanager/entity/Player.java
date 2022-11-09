@@ -15,7 +15,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Table(name = "players")
-
 public class Player {
 
     @Id
@@ -29,8 +28,4 @@ public class Player {
     private String position;
     private boolean transfer;
     private int price;
-
-
-
-
 }

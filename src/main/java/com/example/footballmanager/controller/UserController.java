@@ -36,6 +36,4 @@ public class UserController {
     public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
         return new ResponseEntity<>(userService.findByUsername(username), HttpStatus.OK);
     }
-
-
 }

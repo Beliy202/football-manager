@@ -1,13 +1,10 @@
 package com.example.footballmanager.controller;
 
 import com.example.footballmanager.dto.AddTeamPlayerDto;
-import com.example.footballmanager.dto.PlayerDto;
 import com.example.footballmanager.dto.PlayerTransferDto;
 import com.example.footballmanager.dto.TeamDto;
-import com.example.footballmanager.entity.Coach;
 import com.example.footballmanager.entity.Player;
 import com.example.footballmanager.entity.Team;
-import com.example.footballmanager.servise.CoachService;
 import com.example.footballmanager.servise.PlayerService;
 import com.example.footballmanager.servise.TeamService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,11 +20,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/team")
 public class TeamController {
+
     @Autowired
     private TeamService teamService;
     @Autowired
     private PlayerService playerService;
-
 
     @PostMapping("/create")
     public ResponseEntity<TeamDto> createTeam(@RequestBody Team team) {
@@ -63,37 +60,29 @@ public class TeamController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
-
     @PostMapping("/addPlayer")
-    public ResponseEntity<Team> addPlayer(@RequestBody AddTeamPlayerDto addTeamPlayerDto){
-
-        Player player = playerService.findByFirstNameAndLastName(addTeamPlayerDto.getPlayerFirstName(),addTeamPlayerDto.getPlayerLastName());
+    public ResponseEntity<Team> addPlayer(@RequestBody AddTeamPlayerDto addTeamPlayerDto) {
+        Player player = playerService.findByFirstNameAndLastName(addTeamPlayerDto.getPlayerFirstName(), addTeamPlayerDto.getPlayerLastName());
         Team team = teamService.findByNameTeam(addTeamPlayerDto.getTeamName());
         team.getPlayers().add(player);
         Team save = teamService.save(team);
         return new ResponseEntity<>(save, HttpStatus.CREATED);
-
     }
 
     @PutMapping("/update/{firstName}/{lastName}")
-    public ResponseEntity<HttpStatus> addPlayerOnTheTransfer(@RequestParam boolean transfer, @PathVariable String firstName,@PathVariable String lastName) {
-        Player player = playerService.findByFirstNameAndLastName(firstName,lastName);
+    public ResponseEntity<HttpStatus> addPlayerOnTheTransfer(@RequestParam boolean transfer, @PathVariable String firstName, @PathVariable String lastName) {
+        Player player = playerService.findByFirstNameAndLastName(firstName, lastName);
         player.setTransfer(transfer);
         playerService.save(player);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/transfer")
-    public ResponseEntity<HttpStatus> transferPlayer(@RequestBody PlayerTransferDto playerTransferDto){
+    public ResponseEntity<HttpStatus> transferPlayer(@RequestBody PlayerTransferDto playerTransferDto) {
         Team fromTeam = teamService.findByNameTeam(playerTransferDto.getFromTeam());
         Team toTeam = teamService.findByNameTeam(playerTransferDto.getToTeam());
-        Player transferPlayer = playerService.findByFirstNameAndLastName(playerTransferDto.getPlayerFirstName(),playerTransferDto.getPlayerLastName());
-        teamService.transfer(fromTeam,toTeam,transferPlayer,playerTransferDto);
+        Player transferPlayer = playerService.findByFirstNameAndLastName(playerTransferDto.getPlayerFirstName(), playerTransferDto.getPlayerLastName());
+        teamService.transfer(fromTeam, toTeam, transferPlayer, playerTransferDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
-
-
-
 }

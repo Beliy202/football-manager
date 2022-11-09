@@ -8,6 +8,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class CoachDto {
+
     private String coachFirstName;
     private String coachLastName;
     private String coachAge;

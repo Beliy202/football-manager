@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class SaveUserDto {
-    String username;
-    String password;
-    String name;
+
+    private String username;
+    private String password;
+    private String name;
 }

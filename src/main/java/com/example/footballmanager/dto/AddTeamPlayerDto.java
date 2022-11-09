@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class AddTeamPlayerDto {
-    String playerFirstName;
-    String playerLastName;
-    String teamName;
 
+    private String playerFirstName;
+    private String playerLastName;
+    private String teamName;
 }

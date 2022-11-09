@@ -28,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/user/registration/**").permitAll()
                 .antMatchers("/user/registration/admin").hasAuthority(Role.ADMIN.name())
-                .antMatchers(HttpMethod.POST, "/player/save/").hasAuthority(Role.ADMIN.name())
+                .antMatchers(HttpMethod.POST, "/player/save").hasAuthority(Role.ADMIN.name())
 //                .antMatchers(HttpMethod.PUT, "/player/update/**").hasAuthority(Role.ADMIN.name())
 //                .antMatchers(HttpMethod.POST, "/team/create/").hasAuthority(Role.ADMIN.name())
 //                .antMatchers(HttpMethod.POST, "/coach/saveCoach/").hasAuthority(Role.ADMIN.name())
@@ -36,7 +36,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .logout().permitAll();
-
     }
 
     @Bean
@@ -48,5 +47,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
-
 }

@@ -16,14 +16,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/player")
 public class PlayerController {
+
     @Autowired
     private PlayerService playerService;
 
     @GetMapping("/{firstName}/{lastName}")
     public ResponseEntity<PlayerDto> findByFirstNameAndLastname(@PathVariable String firstName, @PathVariable String lastName) {
         log.info("Request method findByName, param{}", firstName);
-        Player player = playerService.findByFirstNameAndLastName(firstName,lastName);
-
+        Player player = playerService.findByFirstNameAndLastName(firstName, lastName);
         return new ResponseEntity<>(PlayerDto.builder()
                 .firstName(player.getFirstName())
                 .lastName(player.getLastName())
@@ -35,7 +35,6 @@ public class PlayerController {
                 .price(player.getPrice())
                 .build(), HttpStatus.OK);
     }
-
 
     @PostMapping("/save")
     public ResponseEntity<PlayerDto> createPlayer(@RequestBody Player player) {
@@ -60,7 +59,6 @@ public class PlayerController {
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
 
-
     @PutMapping("/update/{oldFirstName}")
     public ResponseEntity<PlayerDto> update(@RequestBody Player player, @PathVariable String oldFirstName) {
         playerService.update(player, oldFirstName);
@@ -74,15 +72,13 @@ public class PlayerController {
                 .transfer(player.isTransfer())
                 .price(player.getPrice())
                 .build(), HttpStatus.OK);
-
     }
 
     @DeleteMapping("/delete/{firstName}/{lastName}")//TODO:
     public ResponseEntity<HttpStatus> deletePlayerByName(@PathVariable String firstName, @PathVariable String lastName) {
-        Player player = playerService.findByFirstNameAndLastName(firstName,lastName);
+        Player player = playerService.findByFirstNameAndLastName(firstName, lastName);
         playerService.delete(player);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }
 

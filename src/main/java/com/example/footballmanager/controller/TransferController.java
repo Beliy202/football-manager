@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/transfer")
 public class TransferController {
+
     @Autowired
     private PlayerService playerService;
     @Autowired
@@ -27,38 +28,31 @@ public class TransferController {
     @GetMapping("/{transfer}")
     public ResponseEntity<List<Player>> findByTransfer(@PathVariable Boolean transfer) {
         List<Player> players = playerService.findByTransfer(transfer);
-
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
 
     @PostMapping("/saveTransfer")
-    public ResponseEntity<Transfer> save(@RequestBody Transfer transfer){
+    public ResponseEntity<Transfer> save(@RequestBody Transfer transfer) {
         Transfer transfer1 = transferService.save(transfer);
-        return new ResponseEntity<>(transfer1,HttpStatus.CREATED);
+        return new ResponseEntity<>(transfer1, HttpStatus.CREATED);
     }
 
     @GetMapping("/find/bind/{id}")
-    public ResponseEntity<Transfer> findById(@PathVariable Long id){
+    public ResponseEntity<Transfer> findById(@PathVariable Long id) {
         Transfer transfer = transferService.findById(id);
-        return new ResponseEntity<>(transfer,HttpStatus.OK);
+        return new ResponseEntity<>(transfer, HttpStatus.OK);
     }
 
     @GetMapping("/{transfer}/{id}")
-    public ResponseEntity<Transfer> findByTeamTransfer(@PathVariable boolean transfer, @PathVariable Long id){
+    public ResponseEntity<Transfer> findByTeamTransfer(@PathVariable boolean transfer, @PathVariable Long id) {
         Transfer transfer1 = transferService.findById(id);
         List<Team> teams = new ArrayList<>();
         teamService.findAll().forEach(teams::add);
         for (int i = 0; i < teams.size(); i++) {
-            if(teams.get(i).getPlayers().get(i).isTransfer()==(transfer))
+            if (teams.get(i).getPlayers().get(i).isTransfer() == (transfer))
                 transfer1.getResponseTeam().add(teams.get(i));
         }
         transferService.save(transfer1);
-        return new ResponseEntity<>(transfer1,HttpStatus.OK);
+        return new ResponseEntity<>(transfer1, HttpStatus.OK);
     }
-
-
-
-
-
-
 }

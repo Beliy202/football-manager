@@ -24,9 +24,10 @@ public class Team {
     private String nameTeam;
     private String stadium;
     private int teamBudget;
+
     @OneToOne(fetch = FetchType.EAGER)
     private Coach coach;
+
     @OneToMany(fetch = FetchType.EAGER)
     private List<Player> players;
-
 }

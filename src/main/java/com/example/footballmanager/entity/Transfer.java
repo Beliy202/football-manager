@@ -20,6 +20,7 @@ public class Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     @OneToMany
     private List<Player> transferPlayers;
 

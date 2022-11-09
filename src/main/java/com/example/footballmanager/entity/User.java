@@ -20,10 +20,10 @@ import java.util.Set;
 @Builder
 @Entity(name = "users")
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String username;
     private String password;
     private String name;
@@ -36,8 +36,6 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }
-
-
 
     @Override
     public boolean isAccountNonExpired() {
@@ -58,5 +56,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }

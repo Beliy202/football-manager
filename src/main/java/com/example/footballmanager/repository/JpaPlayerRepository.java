@@ -9,8 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface JpaPlayerRepository extends JpaRepository<Player,Long> {
-    Optional<Player> findByFirstName(String name);
 
+    Optional<Player> findByFirstName(String name);
 
     Optional<List<Player>> findByTransfer(boolean transfer);
 

@@ -15,14 +15,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Table(name = "coach")
-
 public class Coach {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String coachFirstName;
     private String coachLastName;
     private String coachAge;
-
-
 }
